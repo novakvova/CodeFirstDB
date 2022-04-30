@@ -25,7 +25,9 @@ namespace CodeFirstExample
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=hello;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=.;Database=hello;Trusted_Connection=True;");
+                optionsBuilder.UseNpgsql("Server=91.238.103.51;Port=5743;Database=dbbv012;User Id=bv012user;Password=Wds543iedd*kendhYYJDJDNNnndmd73d@sdf88U^ew!;");
+
             }
         }
     }
