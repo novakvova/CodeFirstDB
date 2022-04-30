@@ -18,5 +18,10 @@ namespace CodeFirstExample.Entites
         public string Name { get; set; }
 
         public virtual IList<City> Cities { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id} - {Name}";
+        }
     }
 }
