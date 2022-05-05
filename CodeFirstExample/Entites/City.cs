@@ -9,14 +9,17 @@ using System.Threading.Tasks;
 namespace CodeFirstExample.Entites
 {
     [Table("tblCities")]
-    public class City
+    public class City : BaseEntity<int>
     {
-        [Key]
-        public int Id { get; set; }
         [Required, StringLength(200)]
         public string Name { get; set; }
         [ForeignKey("Country")]
         public int CountryId { get; set; }
         public virtual Country Country { get; set; }
+
+        public override string ToString()
+        {
+            return $"Id: {Id}\t Name:{Name}\t County: {Country.Name}";
+        }
     }
 }

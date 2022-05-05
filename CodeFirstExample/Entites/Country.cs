@@ -9,11 +9,8 @@ using System.Threading.Tasks;
 namespace CodeFirstExample.Entites
 {
     [Table("tblCountries")]
-    public class Country
+    public class Country : BaseEntity<int>
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required, StringLength(255)]
         public string Name { get; set; }
 

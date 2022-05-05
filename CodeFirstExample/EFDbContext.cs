@@ -12,6 +12,7 @@ namespace CodeFirstExample
     {
         public EFDbContext()
         {
+            Console.WriteLine("Create dB Context "+ DateTime.Now);
             //Database.EnsureCreated();
             //Database.Migrate();
         }
