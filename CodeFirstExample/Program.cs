@@ -82,7 +82,6 @@ namespace CodeFirstExample
             .As<IMapper>()
             .InstancePerLifetimeScope();
 
-
             containerBuilder.RegisterType<EFDbContext>().SingleInstance();
             containerBuilder.RegisterType<CityRepository>().As<ICityRepository>();
             containerBuilder.RegisterType<CountryRepository>().As<ICountryRepository>();
