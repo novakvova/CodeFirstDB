@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.ExceptionServices;
 
 namespace TestException
 {
@@ -11,20 +12,37 @@ namespace TestException
         static void Main(string[] args)
         {
             AppDomain currentDomain = AppDomain.CurrentDomain;
-            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+            currentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
+            //currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
 
-            //Girl girl=new Girl();
-            //girl = null;
-            //girl.Size = "23";
             int id = 0;
-            id=int.Parse(Console.ReadLine());
-            if (id==0)
+            id = int.Parse(Console.ReadLine());
+            if (id == 0)
             {
                 //throw new Exception("У нас проблеми Хюстон");
                 throw new ExceptionWpf("Проблема в прокладці між сідушкой та кермом"); //new ArgumentException("id не може буть 0");
             }
+
+            //Girl girl=new Girl();
+            //girl = null;
+            //girl.Size = "23";
             //throw new Exception("У нас проблеми Хюстон");
             Console.WriteLine("Hello World!");
+        }
+
+        private static void CurrentDomain_FirstChanceException(object sender, FirstChanceExceptionEventArgs eventArgs)
+        {
+            try
+            {
+                Console.WriteLine("Log from FirstChanceException: " + eventArgs.Exception.Message);
+                //throw new ExceptionWpf(eventArgs.Exception.Message);
+                
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)

@@ -25,6 +25,7 @@ namespace CodeFirstExample
         }
         public void ShowCityAndCountry()
         {
+            
             List<CityItemModel> cities = _cityRepository.GetAll()
                 .Include(x => x.Country)
                 .Select(x=>_mapper.Map<CityItemModel>(x)).ToList();
